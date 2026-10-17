@@ -2,8 +2,13 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/config";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Auktionen from "./components/Auktionen";
+import Kundenkonto from "./components/Kundenkonto";
+import Katalogliste from "./components/Katalogliste";
+import Los from "./components/Los";
+import Login from "./components/Login";
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -42,10 +47,19 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
     <Header />
-<Auktionen />
-    <main>
-      <h1>Auktionshaus</h1>
+    <Routes>
+        <Route path="/" element={<Auktionen />} />
+        <Route path="/auktionen" element={<Auktionen />} />
+        <Route path="/kundenkonto" element={<Kundenkonto />} />
+        <Route path="/katalog/:auctionNumber" element={<Katalogliste />}/>
+        <Route path="/los/:losId" element={<Los />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    {/* <Auktionen /> */}
+    {/* <main>
+      <h1>Lose</h1>
 
       {documents.length === 0 ? (
         <p>Keine Dokumente gefunden.</p>
@@ -57,7 +71,8 @@ function App() {
           </article>
         ))
       )}
-    </main>
+    </main> */}
+    </BrowserRouter>
     </>
   );
 }

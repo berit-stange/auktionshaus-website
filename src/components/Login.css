@@ -1,0 +1,75 @@
+
+.login-page {
+  padding: 4rem var(--padding-left, 2rem);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.login-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.login-container h1 {
+  margin-bottom: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.login-form label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.login-form input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.85rem;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font: inherit;
+}
+
+.login-form button {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #171717;
+  background: #171717;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.login-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.login-error {
+  color: #b00020;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.login-register-note {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.login-back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: inherit;
+  font-size: 0.9rem;
+}

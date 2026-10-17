@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 const navigation = [
@@ -70,15 +71,15 @@ function Header() {
   }
 
   const leftNavigation = navigation.slice(0, 5);
-const rightNavigation = navigation.slice(5);
+  const rightNavigation = navigation.slice(5);
 
   return (
     <header className="site-header">
       
   <nav className="main-nav" aria-label="Hauptnavigation">
-  <a className="site-title" href="/" onClick={closeNavigation}>
+    <Link className="site-title" to="/" onClick={closeNavigation}>
     AUKTIONSHAUS
-  </a>
+    </Link>
 
   <button
     className="mobile-toggle"
@@ -153,6 +154,8 @@ const rightNavigation = navigation.slice(5);
     ))}
   </ul>
 
+{/* -------- Menü rechts -------- */}
+
   <ul className="nav-list nav-right">
     {rightNavigation.map((item) => (
       <li
@@ -208,6 +211,27 @@ const rightNavigation = navigation.slice(5);
         )}
       </li>
     ))}
+    <li className="nav-item header-icon-item">
+  <a href="/suche" className="header-icon-link" aria-label="Suche">
+    <span className="material-symbols-outlined">search</span>
+  </a>
+</li>
+
+{/* ---------- Kundenkonto ----------- */}
+
+<li className="nav-item header-icon-item">
+  <Link
+  to="/kundenkonto"
+  className="header-icon-link"
+  aria-label="Kundenkonto"
+  onClick={closeNavigation}
+>
+  <span className="material-symbols-outlined">
+    account_circle
+  </span>
+</Link>
+</li>
+
     <li className="nav-item language-item">
       <a className="language-link" href="/en" aria-label="English">
         EN

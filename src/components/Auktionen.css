@@ -69,6 +69,12 @@ h2 {
   padding: 24px 0;
   border-bottom: 1px solid #bdbdbd;
   color: #191919;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auction-row:hover {
+  color: inherit;
 }
 
 .auction-row-tag {

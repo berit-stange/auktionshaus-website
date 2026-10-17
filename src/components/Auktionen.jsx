@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { Link } from "react-router-dom";
 import "./Auktionen.css";
 
 function Auktionen() {
@@ -80,7 +81,11 @@ function Auktionen() {
 <div className="auctions-list">
   {auktionen.map((auktion) => (
     
-<article className="auction-row" key={auktion.id}>
+<Link
+    key={auktion.id}
+    to={`/katalog/${auktion.auctionNumber}`}
+    className="auction-row"
+  >
   <div className="auction-row-tag">
     Auktionen
   </div>
@@ -104,7 +109,7 @@ function Auktionen() {
       />
     )}
   </div>
-</article>
+</Link>
 
   ))}
 </div>

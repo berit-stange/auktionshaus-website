@@ -1,0 +1,324 @@
+
+.kundenkonto-page {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 70vh;
+  padding: 64px var(--padding-right, 2rem) 100px
+    var(--padding-left, 2rem);
+  color: #191919;
+  background: #fff;
+}
+
+/* Kopfbereich */
+
+.kundenkonto-heading {
+  margin-bottom: 48px;
+}
+
+.kundenkonto-eyebrow {
+  margin: 0 0 14px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.kundenkonto-heading h1 {
+  margin: 0 0 16px;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.05rem;
+}
+
+.kundenkonto-description {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Leere Merkliste */
+
+.merkliste-empty {
+  padding: 40px 0;
+  border-top: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.merkliste-empty h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.merkliste-empty p {
+  margin: 0 0 24px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.merkliste-empty a {
+  color: #191919;
+  text-underline-offset: 4px;
+}
+
+/* Merkliste */
+
+.merkliste-list {
+  width: 100%;
+  border-top: 1px solid #bdbdbd;
+}
+
+.merkliste-item {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+/* Klickbarer Bereich mit Bild und Losinformationen */
+
+.merkliste-item-link {
+  display: contents;
+  color: inherit;
+  text-decoration: none;
+}
+
+.merkliste-item-link:hover .merkliste-info h2 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Bild */
+
+.merkliste-image {
+  width: 120px;
+  height: 120px;
+}
+
+.merkliste-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Losnummer, Künstler und Titel in einer Reihe */
+
+.merkliste-info {
+  display: grid;
+  grid-template-columns: 100px minmax(140px, 1fr) minmax(180px, 2fr);
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.merkliste-lot-number {
+  margin: 0;
+  color: #666;
+  font-size: 12px;
+}
+
+.merkliste-info h2 {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.merkliste-info p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Aus Merkliste entfernen */
+
+.merkliste-remove {
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #191919;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.merkliste-remove:hover {
+  opacity: 0.6;
+}
+
+
+/* Layout des Kundenbereichs */
+.kundenkonto-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+/* Linke Sidebar */
+.kundenkonto-sidebar {
+  position: sticky;
+  top: 32px;
+  padding-right: 24px;
+  /* border-right: 1px solid #d0d0d0; */
+  text-align: left;
+}
+
+.kundenkonto-sidebar-title {
+  margin: 0 0 24px;
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+
+.kundenkonto-sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.kundenkonto-nav-link {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5e5;
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kundenkonto-nav-link:hover,
+.kundenkonto-nav-link.active {
+  color: #111;
+}
+
+.kundenkonto-nav-link.active {
+  font-weight: 600;
+}
+
+.kundenkonto-logout {
+  display: block;
+  width: 100%;
+  margin-top: 32px;
+  padding: 12px 0;
+  border: none;
+  border: 1px solid #d0d0d0;
+  background: transparent;
+  color: #555;
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.kundenkonto-logout:hover {
+  color: #111;
+}
+
+/* Rechter Inhaltsbereich */
+.kundenkonto-content {
+  min-width: 0;
+}
+
+/* Tablet und Smartphone */
+@media (max-width: 800px) {
+  .kundenkonto-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .kundenkonto-sidebar {
+    position: static;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 16px;
+    /* max-height: 100vh; */
+  }
+
+  .kundenkonto-sidebar-title {
+    margin-bottom: 12px;
+  }
+
+  .kundenkonto-sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+  }
+
+  .kundenkonto-nav-link {
+    padding: 8px 0;
+    border-bottom: none;
+  }
+}
+
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .merkliste-item {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .merkliste-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .merkliste-info {
+    grid-template-columns: 70px minmax(100px, 1fr) minmax(120px, 1.5fr);
+    gap: 12px;
+  }
+
+  .merkliste-remove {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+/* Smartphone */
+
+@media (max-width: 600px) {
+  .kundenkonto-page {
+    padding: 40px 1rem 64px;
+  }
+
+  .kundenkonto-heading {
+    margin-bottom: 32px;
+  }
+
+  .merkliste-item {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .merkliste-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .merkliste-info {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .merkliste-info h2 {
+    font-size: 16px;
+  }
+
+  .merkliste-remove {
+    grid-column: 2;
+    justify-self: start;
+    padding: 4px 0;
+    text-align: left;
+  }
+}
