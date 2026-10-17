@@ -1,6 +1,6 @@
 
 .los-page {
-  padding: 2rem var(--padding-left, 2rem);
+  padding: 2rem 10rem 2rem 10rem;
 }
 
 .los-breadcrumb {
@@ -22,11 +22,12 @@
 .los-detail {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(2rem, 3vw, 0.5rem);
   align-items: start;
 }
 
 .los-detail-image {
+  max-width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,6 +43,7 @@
 
 .los-detail-info {
   min-width: 0;
+  text-align: left;
 }
 
 .los-eyebrow {

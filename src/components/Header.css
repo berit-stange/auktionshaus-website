@@ -2,39 +2,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=block');
 
+/* =========================
+   HEADER
+========================= */
 
+/* Header und Navigation erhalten gemeinsam den Hintergrund */
 .site-header {
   width: 100%;
   position: relative;
   z-index: 100;
-  background: #fff;
+  /* background-color: var(--page-background, #f5f5f5); */
+  background-color: transparent !important;
   color: #171717;
-  /* border-bottom: 1px solid #e5e5e5; */
   font-family: "Work Sans", Helvetica, sans-serif;
+  overflow: visible;
 }
 
+/* Sobald das Mega-Menü geöffnet ist */
+/* .site-header.mega-menu-open {
+  background-color: rgb(245, 245, 245);
+} */
+
+/* Die Navigationsleiste übernimmt die Hintergrundfarbe des Headers */
 .main-nav {
+  background-color: transparent;
   min-height: 76px;
   padding: 0 4%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: clamp(24px, 3vw, 48px);
+  position: relative;
+  flex-wrap: nowrap;
 }
 
 .site-title {
-  flex-shrink: 0;
+  display: block;
+  flex: 0 0 auto;
   font-size: 32px;
   color: #171717;
   font-weight: bold;
   letter-spacing: 0.1rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
+/* =========================
+   NAVIGATION
+========================= */
+
 .nav-content {
-  display: flex;
+   display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  flex: 1;
   min-width: 0;
   gap: clamp(24px, 3vw, 48px);
 }
@@ -89,6 +111,31 @@
   opacity: 0.55;
 }
 
+/* Buttons für Menüpunkte mit Untermenü */
+
+.nav-parent-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 28px 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.submenu-indicator {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Unterstreichung der Hauptnavigation */
+
 .nav-item::after {
   content: "";
   position: absolute;
@@ -107,49 +154,87 @@
 
 .submenu-toggle {
   display: none;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  font-size: 18px;
 }
 
+/* =========================
+   MEGA-MENÜ
+   Wichtig: Das Menü muss in
+   Header.jsx außerhalb der
+   nav-item-Elemente stehen.
+========================= */
+
+/* Mega-Menü über die gesamte Headerbreite */
 .submenu {
   display: none;
   position: absolute;
   top: 100%;
-  left: -20px;
-  min-width: 235px;
-  padding: 16px 20px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0;
-  list-style: none;
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 8px 20px rgb(0 0 0 / 5%);
+  padding: 40px 4%;
+  background-color: rgb(245, 245, 245);
+  background-color: var(--page-background, #f5f5f5);
+  border-top: 1px solid #e5e5e5;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 6%);
+  z-index: 200;
+  text-align: left;
 }
 
-.nav-item:hover > .submenu,
-.nav-item:focus-within > .submenu,
 .submenu.submenu-visible {
   display: block;
 }
 
-.submenu li a {
-  display: block;
-  padding: 10px 0;
-  color: #333;
-  text-decoration: none;
-  font-size: 13px;
-  line-height: 1.5;
+/* Inhalt des Mega-Menüs */
+.submenu-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 32%);
+  gap: 48px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.submenu li a:hover {
+/* Links im Mega-Menü */
+
+.submenu-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 0 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.submenu-links li a {
+  display: block;
+  padding: 12px 0;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.submenu-links li a:hover {
   opacity: 0.55;
 }
 
-.mobile-toggle {
-  display: none;
+/* Bildfläche rechts */
+
+.submenu-image {
+  width: 100%;
+  min-height: 240px;
+  background: #f1f0ed;
 }
+
+/* =========================
+   ICONS
+========================= */
 
 .header-icon-item::after {
   display: none;
@@ -166,8 +251,8 @@
 
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
-  font-weight:lighter;
-  font-style:normal;
+  font-weight: 300;
+  font-style: normal;
   font-size: 20px;
   line-height: 1;
   letter-spacing: normal;
@@ -182,10 +267,19 @@
   opacity: 0.55;
 }
 
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .main-nav {
-    min-height: 64px;
+     min-height: 64px;
     padding: 0 20px;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 0;
     justify-content: space-between;
@@ -212,18 +306,26 @@
     font-size: 19px;
   }
 
-  .nav-list {
+  .nav-content {
     display: none;
-    margin-left: 0;
+    flex: 0 0 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-content.is-open {
+    display: flex;
+  }
+
+  .nav-list {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     width: 100%;
     gap: 0;
-    padding: 8px 0 20px;
-  }
-
-  .nav-list.is-open {
-    display: flex;
+    padding: 8px 0 0;
   }
 
   .nav-item {
@@ -238,7 +340,8 @@
     justify-content: space-between;
   }
 
-  .nav-link {
+  .nav-link,
+  .nav-parent-button {
     flex: 1;
     padding: 15px 0;
     font-size: 15px;
@@ -250,20 +353,47 @@
     min-height: 44px;
   }
 
+  /* Mega-Menü auf Mobilgeräten unterhalb
+     der geöffneten Navigation anzeigen. */
+
   .submenu {
     position: static;
-    min-width: 0;
-    padding: 0 0 12px 14px;
+    width: 100%;
+    padding: 8px 0 20px;
     border: 0;
     box-shadow: none;
   }
 
-  .submenu li a {
+  .submenu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .submenu-links {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .submenu-links li a {
     padding: 10px 0;
   }
 
+  .submenu-image {
+    min-height: 160px;
+  }
+
+  .nav-right {
+    margin-left: 0;
+  }
+
+  .header-icon-link {
+    justify-content: flex-start;
+    padding: 15px 0;
+  }
+
   .language-link {
-    margin-left: auto;
-    padding: 20px 0;
+    display: block;
+    padding: 15px 0;
   }
 }

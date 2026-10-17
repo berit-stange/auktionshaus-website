@@ -212,15 +212,15 @@ function Katalogliste() {
                   to={`/los/${los.id}`}
                   className="katalogliste-card-link"
                 >
-                  {los.imageUrl && (
-                    <div className="katalogliste-image">
+                  <div className="katalogliste-image">
+                    {los.imageUrl && (
                       <img
                         src={los.imageUrl}
                         alt={los.title || los.artist || "Auktionslos"}
                         loading="lazy"
                       />
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   <div className="katalogliste-info">
                     <p className="katalogliste-lot">
