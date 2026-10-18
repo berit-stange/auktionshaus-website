@@ -1,14 +1,50 @@
 
 import { useEffect, useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/config";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Auktionen from "./components/Auktionen";
 import Kundenkonto from "./components/Kundenkonto";
 import Katalogliste from "./components/Katalogliste";
 import Los from "./components/Los";
 import Login from "./components/Login";
+import Startslider from "./components/Startslider";
+
+
+function AppLayout() {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  return (
+    <>
+      <Header
+        transparent={isHomePage}
+        backgroundColor={isHomePage ? "transparent" : "#fff"}
+      />
+
+      <Routes>
+        <Route path="/" element={<Startslider />} />
+        <Route path="/auktionen" element={<Auktionen />} />
+        <Route path="/kundenkonto" element={<Kundenkonto />} />
+        <Route
+          path="/katalog/:auctionNumber"
+          element={<Katalogliste />}
+        />
+        <Route path="/los/:losId" element={<Los />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
+  );
+}
+
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -46,34 +82,9 @@ function App() {
   }
 
   return (
-    <>
     <BrowserRouter>
-    <Header />
-    <Routes>
-        <Route path="/" element={<Auktionen />} />
-        <Route path="/auktionen" element={<Auktionen />} />
-        <Route path="/kundenkonto" element={<Kundenkonto />} />
-        <Route path="/katalog/:auctionNumber" element={<Katalogliste />}/>
-        <Route path="/los/:losId" element={<Los />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    {/* <Auktionen /> */}
-    {/* <main>
-      <h1>Lose</h1>
-
-      {documents.length === 0 ? (
-        <p>Keine Dokumente gefunden.</p>
-      ) : (
-        documents.map((document) => (
-          <article key={document.id}>
-            <h2>{document.title ?? document.id}</h2>
-            <pre>{JSON.stringify(document, null, 2)}</pre>
-          </article>
-        ))
-      )}
-    </main> */}
+      <AppLayout />
     </BrowserRouter>
-    </>
   );
 }
 

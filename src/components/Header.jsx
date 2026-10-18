@@ -86,7 +86,10 @@ const navigation = [
   },
 ];
 
-function Header() {
+function Header({
+  backgroundColor = "#fff",
+  transparent = false,
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
 
@@ -144,7 +147,12 @@ function Header() {
   }
 
   return (
-    <header className={`site-header ${openMenu ? "mega-menu-open" : ""}`}>
+    <header
+      className={`site-header ${
+        openMenu ? "mega-menu-open" : ""
+      } ${transparent ? "site-header--transparent" : ""}`}
+      style={{ "--header-background": backgroundColor }}
+    >
       <nav className="main-nav" aria-label="Hauptnavigation">
         <Link className="site-title" to="/" onClick={closeNavigation}>
           AUKTIONSHAUS
