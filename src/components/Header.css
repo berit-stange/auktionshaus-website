@@ -35,19 +35,40 @@
 }
 
 /* Auch bei geöffnetem Mega-Menü dieselbe Hintergrundfarbe */
-
 .site-header.mega-menu-open {
-  background-color: var(--header-background, #fff);
+  background-color: var(--header-background, #eeeeee);
 }
 
 .site-header--transparent .submenu {
-  background-color: #fff;
+  background-color: #eeeeee;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   opacity: 1;
 }
 .site-header--transparent .submenu-inner {
-  background-color: #fff;
+  background-color: #eeeeee;
+}
+
+/* Header auf der Startseite ohne geöffnetes Submenü */
+.site-header--transparent:not(.mega-menu-open) {
+  background-color: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Header übernimmt die Hintergrundfarbe des Submenüs */
+.site-header--transparent.mega-menu-open {
+  background-color: #eeeeee;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Submenü ebenfalls deckend weiß */
+.site-header--transparent .submenu {
+  background-color: #eeeeee;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  opacity: 1;
 }
 
 /* =========================
