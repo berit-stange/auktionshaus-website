@@ -26,3 +26,35 @@ dist-ssr
 #firebase
 firebase
 .config.js
+
+###################################
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Firebase local configuration
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*

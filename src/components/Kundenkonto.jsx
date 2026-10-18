@@ -14,6 +14,7 @@ import "./Kundenkonto.css";
 import { NavLink } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Login from "./Login";
 
 function Kundenkonto() {
   const [user, setUser] = useState(null);
@@ -51,9 +52,7 @@ function Kundenkonto() {
       setError("");
 
       if (!user) {
-        setMerkliste([]);
-        setLoading(false);
-        return;
+        return <Login />;
       }
 
       try {
@@ -134,20 +133,22 @@ function Kundenkonto() {
     }
   }
 
-  if (!authGeprueft || loading) {
-    return (
-      <main className="kundenkonto-page">
-        <p>Merkliste wird geladen …</p>
-      </main>
+  if (!authGeprueft) {
+  return (
+    <main className="kundenkonto-page">
+      <p>Konto wird geladen …</p>
+    </main>
     );
   }
 
   if (!user) {
+    return <Login />;
+  }
+
+  if (loading) {
     return (
       <main className="kundenkonto-page">
-        <h1>Meine Merkliste</h1>
-        <p>Bitte melde dich an, um deine Merkliste aufzurufen.</p>
-        <Link to="/login">Zur Anmeldung</Link>
+        <p>Merkliste wird geladen …</p>
       </main>
     );
   }

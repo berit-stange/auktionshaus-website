@@ -38,7 +38,7 @@ function Startslider() {
     <section className="startslider" aria-label="Aktuelle Highlights">
       <div className="startslider__text">
         <div className="startslider__intro">
-          <p className="startslider__eyebrow">{slide.eyebrow}</p>
+          {/* <p className="startslider__eyebrow">{slide.eyebrow}</p> */}
 
           <h1 className="startslider__title">{slide.title}</h1>
 
